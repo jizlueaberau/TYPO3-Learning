@@ -116,6 +116,9 @@ return [
         'viewpage' => [
             'packagePath' => 'typo3/sysext/viewpage/',
         ],
+        'typo3training' => [
+            'packagePath' => 'typo3conf/ext/typo3training/',
+        ],
     ],
     'version' => 5,
 ];

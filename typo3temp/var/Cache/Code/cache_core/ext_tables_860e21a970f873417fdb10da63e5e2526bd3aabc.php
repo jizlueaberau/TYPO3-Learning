@@ -1152,4 +1152,25 @@ if (TYPO3_MODE === 'BE' && !(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_INSTALL)) {
     );
 }
 
+/**
+ * Extension: typo3training
+ * File: /var/www/html/typo3conf/ext/typo3training/ext_tables.php
+ */
+
+$_EXTKEY = 'typo3training';
+$_EXTCONF = $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][$_EXTKEY] ?? null;
+
+
+defined('TYPO3_MODE') || die('Access denied.');
+
+call_user_func(
+    function($extKey)
+    {
+
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($extKey, 'Configuration/TypoScript', 'TYPO3-Training');
+
+    },
+    $_EXTKEY
+);
+
 #
