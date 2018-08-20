@@ -7,8 +7,43 @@ page.10 {
     partialRootPath = EXT:typo3training/Resources/Private/Partials/
     layoutRootPath = EXT:typo3training/Resources/Private/Layouts/
 
-    file = EXT:typo3training/Resources/Private/Templates/Homepage.html
+    #file = EXT:typo3training/Resources/Private/Templates/Homepage.html
 
+    ## Backend Layouts auswerten
+    file.stdWrap.cObject = CASE
+    file.stdWrap.cObject {
+        key.data = pagelayout
+
+        # default = 2Columns
+        default = TEXT
+        default.value = EXT:typo3training/Resources/Private/Templates/2Columns.html
+
+        # Homepage
+        1 = TEXT
+        1.value = EXT:typo3training/Resources/Private/Templates/Homepage.html
+
+        # 2Columns
+        2 < .default
+
+        # 1Columns
+        3 = TEXT
+        3.value = EXT:typo3training/Resources/Private/Templates/1Column.html
+    }
+
+    ## Inhalte an die Templates übergeben
+    variables {
+        jumbotron < styles.content.get
+        jumbotron.select.where = colPos = 3
+
+        left < styles.content.get
+        left.select.where = colPos = 1
+
+        main < styles.content.get
+        main.select.where = colPos = 0
+
+        right < styles.content.get
+        right.select.where = colPos = 2
+    }
 }
 
 page {
